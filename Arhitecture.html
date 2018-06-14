@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>AnCoWe</title>
+    <link rel="stylesheet" href="Arhitecture/scholarly.css">
+    <link rel="stylesheet" href="Arhitecture/prism-coy.css">
+    <script src="Arhitecture/prism.js" defer="defer"></script>
+  </head>
+  <body prefix="schema: http://schema.org/ xsd: http://www.w3.org/2001/XMLSchema# sa: https://ns.science.ai/">
+    <header>
+      <p class="title">AnCoWe</p>
+      <p class="subtitle">by TW-CVLV team</p>
+    </header>
+    <article id="what" typeof="schema:ScholarlyArticle" resource="#">
+      <h1>What is AnCoWe?</h1>
+      <section>
+          <ol>
+            <li property="schema:author" typeof="sa:ContributorRole">
+              <a property="schema:author" href="https://github.com/cristi-cosulianu" typeof="schema:Person">
+                <span property="schema:givenName">Cosulianu</span>
+                <span property="schema:familyName">Cristi</span>
+              </a>
+            </li>
+            <li property="schema:contributor" typeof="sa:ContributorRole">
+              <a property="schema:contributor" href="https://github.com/cristian1997" typeof="schema:Person">
+                <span property="schema:givenName">Vintur</span>
+                <span property="schema:familyName">Cristian</span>
+              </a>
+            </li>
+            <li property="schema:contributor" typeof="sa:ContributorRole">
+              <a property="schema:contributor" href="https://github.com/loghinalexandru" typeof="schema:Person">
+                <span property="schema:givenName">Loghin</span>
+                <span property="schema:familyName">Alexandru</span>
+              </a>
+            </li>
+            <li property="schema:contributor" typeof="sa:ContributorRole">
+              <a property="schema:contributor" href="https://github.com/Florin97" typeof="schema:Person">
+                <span property="schema:givenName">Velesca</span>
+                <span property="schema:familyName">Florin</span>
+              </a>
+            </li>
+          </ol>
+        </section>
+
+      <section typeof="sa:Abstract" id="abstract">
+        <h2>Abstract</h2>
+        <p>
+          We live in a world surrounded by vast amounts of information. 
+Impressive technological advances have allowed for the volume of 
+information we produce to grow exponentially, to the point where we now 
+produce in two days as much information as we produced up to 2003 (that 
+is, from the dawn of mankind to 2003)(<a href="#ref-sch" property="schema:citation">SCH, 2010</a>).
+ With this in mind, we need better tools to help us comprehend vast 
+amounts of data. One way we can do this is by visualizing the data, 
+hence filtering it, extracting what we need and putting it into a format
+ our visual minds are equipped to handle. Effective data visualization 
+helps users analyze data, makes complex data more accessible, 
+understandable and usable.
+        </p>
+      </section>
+      <section typeof="sa:MaterialsAndMethods" id="motivation">
+        <h2>Motivation</h2>
+        <aside typeof="schema:WPSideBar">
+          <p>
+            <strong>New</strong>: you can now join the
+            <a href="https://www.w3.org/community/scholarlyhtml/">Scholarly HTML Community Group</a>
+            to help make this a standard.
+          </p>
+          <p>
+            This document is an early-stage release. While the underlying format is relatively
+            mature and actually implemented, details are still in flux and the format can still be
+            changed. The quality of this document is also being gradually improved. If you’re
+            interested in this project, come join
+            <a href="https://github.com/tw-dali/scholarly.vernacular.io/">the party on GitHub</a>
+            or talk to either <a href="https://twitter.com/sciencedotai">@sciencedotai</a> or
+            <a href="https://twitter.com/robinberjon">@robinberjon</a> in Twitter.
+          </p>
+        </aside>
+        <p>
+            AnCoWe is a web application that involves deploying 
+            an anime-based (Anime API) RPG-style game and comic book 
+            heroes (Marvel API) to reconstitute the classic Mario 
+            gameplay scenario. Our user is able to choose more 
+            features for Mario depending on the chosen character. 
+            In addition, the user will be able to create a login 
+            account with which he can save his or her preferences 
+            for options (game keys, volume of sounds) and will be 
+            able to participate in the Hall of Fame, after completing 
+            the game his score will be entered in a list sorted with 
+            the highest scores.
+        </p>
+        
+      </section>
+      <section typeof="sa:GitArchitecture" id="gitarchitecture">
+        <h2>Github Architecture</h2>
+        <p>
+          We used the following architecture for working on github.
+        </p>
+        <figure typeof="sa:Image">
+            <img src="Arhitecture/arhitectura-git-explanations.png" width="880" height="655">
+            <figcaption>
+              Each branch for different purposes: master for Continuous 
+              Integration, feature branches if needed.
+            </figcaption>
+        </figure>
+
+      </section>
+
+      <section typeof="sa:Architecture" id="architecture">
+        <h2>Architecture</h2>
+        <p>
+          AnCoWe implemented the following MVC architecture:
+        </p>
+        <figure typeof="sa:Image">
+            <img src="Arhitecture/Presentation-MVC.png" width="880" height="655">
+            <figcaption>
+              Made with <a href="https://www.draw.io/">Draw.io tool</a>.
+            </figcaption>
+        </figure>
+        <p>
+          Our server it's made using the open source Node.js runtime 
+          environment. We made this choice because of scalability and the
+          relatively easy learning curve involved. 
+          Because of our architectural design choice, our app is running on a 
+          single thread and will allow hundreds of concurrent connections.
+        </p>
+        <p>
+          The data that is used by our app it's stored using MySQL. The 
+          connection between the database and our server is provided by mysql 
+          node module (<a href="https://www.npmjs.com/package/mysql">link on npm</a>).
+          Basically after a user connects to our game the client makes
+          requests for some data (login, signup, options, scores, sessions), 
+          our server will make a query to the database and then receive a response. 
+        </p>
+        <h4>App flow</h4>
+          <figure typeof="sa:Image">
+              <img src="Arhitecture/Presentation-AppFlow.png" width="880" height="655">
+              <figcaption>
+                  Made with <a href="https://www.draw.io/">Draw.io tool</a>.
+                </figcaption>
+          </figure>
+          <p>
+            In mare parte orice actiune a utilizatorului, selectare de meniu, click pe login
+            signup, taste apasate in cadrul jocului creaza requesturi specifice catre serviciu
+            care interactioneaza cu baza de date pentru a putea construi in raspuns ce va fi
+            procesat de catre client si va afisa rezultatul actiunilor utilizatorului.
+            Dar cred ca diagrama este destul de sugestiva in a prezenta flow-ul aplicatiei.
+          </p>
+          
+
+        <p></p>
+        <h4>Modelling the database</h4>
+        <p>
+          <figure typeof="sa:Image">
+              <img src="Arhitecture/Presentation-Database.png" width="880" height="655">
+              <figcaption>
+                  Made with <a href="https://www.draw.io/">Draw.io tool</a>.
+                </figcaption>
+          </figure>
+          <p>Baza noastra de date este formata din 4 tabele (Users, Sessions, Scores, Options).
+            "Users" este tabela ce contine informatiile pricipale care il identifica pe utilizator
+            si care fac legatura cu restul informatiilor despre acesta aflte in restul tabelelor.
+            Tabela "Sessions" este utilizata pentru a identifica unic sesiunea de joc a utilizatorului
+            si pentru a putea stoca informatiile despre jocul curent. Tabela "Scores" este utilizata
+            pentru a tine evidenta topului cu rezultatele obtinute de jucatori, iar tabela "Options"
+            pastreaza preferintele jucatorului legate de tastele de joc si volumul sunetelor.
+          </p>
+        <h4>REST API</h4>
+        <p>
+          Our REST API are urmatoarele path-uri <code>/login</code>, <code>/signup</code>, 
+          <code>/scores</code> si <code>/options</code> utilizand tehnologia AJAX si path-ul 
+          <code>/data</code> utilizand libraria "sockets.io". Au fost implementate metode de 
+          tipul <b>GET</b> pentru fisierele de diverse tipuri (<code>.html</code>, <code>.css</code>,
+          <code>.js</code>) pentru informatiile de login, optiuni, score dar si pentru cele 
+          necesare rularii jocului. Metode de tip <b>POST</b> au fost folosite pentru signup
+          si pentru optiuni.
+        </p>
+      
+      </section>
+
+      <section typeof="sa:UseCases" id="useCases">
+        <h2>Use Cases</h2>
+        <p>
+          This is how our use cases are looking.
+        </p>
+        <figure typeof="sa:Image">
+            <img src="Arhitecture/Presentation-UseCase.png" width="880" height="655">
+        </figure>
+        <p>Pagina principala este pagina "Menu". Ea poate fi accesata doar dupa ce utilizatorul
+          este autentificat cu un cont existent sau dupa ce isi creaza un cont nou in pagina de
+          "SignUP". Din pagina de "Menu" utilizatorul poate accesa meniurile de Start game,
+          Options, Hall of Fame si Credits. 
+        </p>
+        <p>Options este meniul din care se pot modifica preferintele utilizatorului legate de 
+          tastele de joc si volumul sunetelor.
+        </p>
+        <p>Hall of Fame este meniul in care pote fi vizualizat topul scorurilor obtinute.</p>
+        <p>Credits este meniul unde poate fi vizualizata o mica povestioara despre inceputul 
+          proiectului si de modul in care a decurs
+        </p>
+        <p>Meniul cel mai interesant este cel de Start game care ajuta utilizatorul sa navigheze
+          mai departe spre Choose Characters unde vor fi afisate doua liste cu caracterele 
+          Marvel sau Anime care pot fi selectate. Dupa selectarea unui caracter poate fi vizualizata
+          o descriere a acestuia si apoi se poate naviga cate jocul propriuzis unde capacitatile
+          jucatorului vor fi testate la maxim.  
+        </p>
+        <h2>Additional notes on wireframes and prototype will be found on the repo's <a href="https://github.com/xR86/tw-project">README</a></h2>
+      </section>
+
+      <section typeof="sa:Acknowledgements" id="acknowledgements">
+        <h2>Acknowledgements</h2>
+        <p>
+          AnCoWe would like to thank <a href="http://scholarlyhtml.org/">Scholarly HTML</a> for offering a template for making this academic report.
+        </p>
+        <p>
+          AnCoWe would also extend its thanks to all the people that have made <a href="http://scholarlyhtml.org/">Scholarly HTML</a> possible.
+        </p>
+        <p>
+          We also received very useful feedback and pointers from: <a href="https://www.ionutdanila.com/">Ionut Danila</a>.
+        </p>
+        <p>
+          If we somehow forgot you in this list and you are too gracious to complain, we thank you
+          all the same.
+        </p>
+      </section>
+      <section typeof="sa:Conclusion" id="conclusion">
+        <h2>Conclusion</h2>
+        <p>
+          AnCoWe is still a work in progress and is open to change. If you have
+          feedback, simply
+         <a href="https://github.com/cristi-cosulianu/-TW-4-AnCoWe">make a pull
+          request on our git repository</a>.
+        </p>
+      </section>
+    </article>
+
+</body></html>
