@@ -14,7 +14,7 @@
       <p class="subtitle">by TW-CVLV team</p>
     </header>
     <article id="what" typeof="schema:ScholarlyArticle" resource="#">
-      <h1>What is AnCoWe?</h1>
+      <h1>Arhitecture</h1>
       <section>
           <ol>
             <li property="schema:author" typeof="sa:ContributorRole">
@@ -44,22 +44,6 @@
           </ol>
         </section>
 
-      <section typeof="sa:Abstract" id="abstract">
-        <h2>Abstract</h2>
-        <p>
-          We live in a world surrounded by vast amounts of information. 
-Impressive technological advances have allowed for the volume of 
-information we produce to grow exponentially, to the point where we now 
-produce in two days as much information as we produced up to 2003 (that 
-is, from the dawn of mankind to 2003)(<a href="#ref-sch" property="schema:citation">SCH, 2010</a>).
- With this in mind, we need better tools to help us comprehend vast 
-amounts of data. One way we can do this is by visualizing the data, 
-hence filtering it, extracting what we need and putting it into a format
- our visual minds are equipped to handle. Effective data visualization 
-helps users analyze data, makes complex data more accessible, 
-understandable and usable.
-        </p>
-      </section>
       <section typeof="sa:MaterialsAndMethods" id="motivation">
         <h2>Motivation</h2>
         <aside typeof="schema:WPSideBar">
@@ -159,23 +143,22 @@ understandable and usable.
                   Made with <a href="https://www.draw.io/">Draw.io tool</a>.
                 </figcaption>
           </figure>
-          <p>Baza noastra de date este formata din 4 tabele (Users, Sessions, Scores, Options).
-            "Users" este tabela ce contine informatiile pricipale care il identifica pe utilizator
-            si care fac legatura cu restul informatiilor despre acesta aflte in restul tabelelor.
-            Tabela "Sessions" este utilizata pentru a identifica unic sesiunea de joc a utilizatorului
-            si pentru a putea stoca informatiile despre jocul curent. Tabela "Scores" este utilizata
-            pentru a tine evidenta topului cu rezultatele obtinute de jucatori, iar tabela "Options"
-            pastreaza preferintele jucatorului legate de tastele de joc si volumul sunetelor.
+          <p>Our database consists of 4 tables (Users, Sessions, Scores, Options). 
+            "Users" is the table containing the primary information that identifies 
+            the user and links to the rest of the information about the user in the 
+            rest of the tables. The "Sessions" table is used to uniquely identify 
+            the user's game session and to store the current game information. The 
+            "Scores" table is used to keep track of the results of the players, and
+             the "Options" tab preserves player preferences related to game keys and 
+             volume of sounds.
           </p>
         <h4>REST API</h4>
         <p>
-          Our REST API are urmatoarele path-uri <code>/login</code>, <code>/signup</code>, 
-          <code>/scores</code> si <code>/options</code> utilizand tehnologia AJAX si path-ul 
-          <code>/data</code> utilizand libraria "sockets.io". Au fost implementate metode de 
-          tipul <b>GET</b> pentru fisierele de diverse tipuri (<code>.html</code>, <code>.css</code>,
-          <code>.js</code>) pentru informatiile de login, optiuni, score dar si pentru cele 
-          necesare rularii jocului. Metode de tip <b>POST</b> au fost folosite pentru signup
-          si pentru optiuni.
+          Our REST API has the following paths <code>/login</code>, <code>/signup</code>, 
+          <code>/scores</code>, <code>/options</code> using AJAX tehnologies and using  "sockets.io" 
+          for data transfer. We implemented <b>GET</b> methods for file transfer (<code>.html</code>, <code>.css</code>,
+          <code>.js</code>) and for data required in login, options, scores but even to transfer computation for game. 
+          <b>POST</b> methods where used for options and signup .
         </p>
       
       </section>
@@ -188,25 +171,21 @@ understandable and usable.
         <figure typeof="sa:Image">
             <img src="Arhitecture/Presentation-UseCase.png" width="880" height="655">
         </figure>
-        <p>Pagina principala este pagina "Menu". Ea poate fi accesata doar dupa ce utilizatorul
-          este autentificat cu un cont existent sau dupa ce isi creaza un cont nou in pagina de
-          "SignUP". Din pagina de "Menu" utilizatorul poate accesa meniurile de Start game,
-          Options, Hall of Fame si Credits. 
+        <p>The homepage is the "Menu" page. It can be accessed only after the user is logged 
+          in with an existing account or after creating a new account on the "Signup" page.
+           From the "Menu" page, the user can access the Start game, Options, Hall of Fame,
+           and Credits menus.
         </p>
-        <p>Options este meniul din care se pot modifica preferintele utilizatorului legate de 
-          tastele de joc si volumul sunetelor.
+        <p>Options is the menu from which you can change the user preferences related to game keys and volume of sounds.
         </p>
-        <p>Hall of Fame este meniul in care pote fi vizualizat topul scorurilor obtinute.</p>
-        <p>Credits este meniul unde poate fi vizualizata o mica povestioara despre inceputul 
-          proiectului si de modul in care a decurs
+        <p>Hall of Fame is the menu where the top scores can be viewed.</p>
+        <p>Credits is the menu where you can view a little story about the beginning of the project and how it went.
         </p>
-        <p>Meniul cel mai interesant este cel de Start game care ajuta utilizatorul sa navigheze
-          mai departe spre Choose Characters unde vor fi afisate doua liste cu caracterele 
-          Marvel sau Anime care pot fi selectate. Dupa selectarea unui caracter poate fi vizualizata
-          o descriere a acestuia si apoi se poate naviga cate jocul propriuzis unde capacitatile
-          jucatorului vor fi testate la maxim.  
+        <p>The most exciting menu is the Start game that helps the user navigate further into Choose Characters
+           where two lists with the Marvel or Anime characters can be selected. After selecting a character,
+            you can see a description of the character and then navigate as many games as possible, where the
+           player's capabilities will be tested to the maximum. 
         </p>
-        <h2>Additional notes on wireframes and prototype will be found on the repo's <a href="https://github.com/xR86/tw-project">README</a></h2>
       </section>
 
       <section typeof="sa:Acknowledgements" id="acknowledgements">
